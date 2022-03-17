@@ -1,3 +1,23 @@
+let fechaNavar
+function fechaNav(){
+    fecha = new Date(); //Actualizar fecha.
+
+    anio = fecha.getFullYear();
+    mes = fecha.getMonth();
+    diaNum = fecha.getDate();
+    diaLetra = fecha.getDay();
+
+    let meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    let diaSemana = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sábado','Domingo'];
+
+    fechaNavar =  diaSemana[diaLetra] + ' ' + diaNum + ' de ' + meses[mes] + ' del ' + anio ;  
+    console.log(fechaNavar);
+    document.getElementById('fechaCompleta').innerText = fechaNavar;
+}
+fechaNav();
+
+
+
 let tareas = [];
 const cardsTask = document.getElementById('ConteinerTareas');
 //Guardar Tarea
@@ -128,8 +148,15 @@ const renderizarTareas = () => {
 }
 renderizarTareas();
 
+
+//Hora
 function actual() {
     fecha = new Date(); //Actualizar fecha.
+
+    anio = fecha.getFullYear();
+    mes = fecha.getMonth();
+    diaLetra = fecha.getDate();
+    diaNum = fecha.getDay();
     hora = fecha.getHours(); //hora actual
     minuto = fecha.getMinutes(); //minuto actual
     segundo = fecha.getSeconds(); //segundo actual
@@ -152,5 +179,4 @@ mireloj=document.getElementById("reloj"); //buscar elemento reloj
 mireloj.innerHTML=mihora; //incluir hora en elemento
 }
 setInterval(actualizar,1000); //iniciar temporizador
-
 
