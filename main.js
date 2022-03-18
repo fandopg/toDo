@@ -62,18 +62,20 @@ const pintarTarea = (Task) => {
 }
 
 //Cambia estilo de Tarea
-const cambiaEstilo = (id) => {
+const cambiaEstilo = (id, termino) => {
 
     let cadena = id.split('-');
     let idCard = cadena[1];
     let checkBoxTask = document.getElementById(`I-${idCard}`);
-    if (checkBoxTask.checked == true) {
+    if (checkBoxTask.checked == true || termino == true) {
         document.getElementById(`T-${idCard}`).classList.add('text-decoration-line-through', 'text-secondary'); //Tachar texto
         document.getElementById(`Icon-${idCard}`).hidden = true; //hidden al icono
-        cambioId(idCard, true); //Cambia estado 
+        document.getElementById(`I-${idCard}`).checked = true;
+        cambioId(idCard, true); //Cambia estado
     } else {
         document.getElementById(`T-${idCard}`).classList.remove('text-decoration-line-through', 'text-secondary'); //Tachar texto
         document.getElementById(`Icon-${idCard}`).hidden = false; //Quita hidden al icono
+        document.getElementById(`I-${idCard}`).checked = false;
         cambioId(idCard, false); //Cambia estado 
     }
     EstadoTareas();
@@ -149,7 +151,11 @@ const renderizarTareas = () => {
     }
     tareas.forEach((task) => {
         const card = pintarTarea(task);
+        if (task.Termino == true) {
+            cambiaEstilo(`T-${task.Id}`, task.Termino);
+        }
     });
+    EstadoTareas();
 }
 renderizarTareas();
 
