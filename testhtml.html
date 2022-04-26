@@ -1,0 +1,39 @@
+<div id="C-${Task._id}" class="d-flex justify-content-between p-2">
+  <div class="form-check">
+    <input
+      id="I-${Task._id}"
+      class="form-check-input"
+      type="checkbox"
+      onChange="cambiaEstilo(id)"
+      id="flexCheckDefault"
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+      <span
+        ><i id="Icon-${Task._id}" class="fa-solid fa-clock text-primary"></i
+      ></span>
+      <span id="T-${Task._id}">${Task.title}</span>
+      <p>${Task.title}</p>
+    </label>
+  </div>
+
+  <div>
+    <button
+      id="E-${Task._id}"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      type="button"
+      class="btn btn-outline-primary"
+      onclick="llenar(id)"
+    >
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button
+      id="B-${Task._id}"
+      type="button"
+      class="btn btn-outline-danger"
+      onclick="eliminaTask(id)"
+    >
+      <i class="fa-solid fa-trash-can"></i>
+    </button>
+  </div>
+</div>
